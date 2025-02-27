@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>プロダクト名 | 最高のソリューション</title>
+    <style>
+        /* リセットとベーススタイル */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        /* コンテナ */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* ナビゲーション */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4a6cf7;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #4a6cf7;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #4a6cf7;
+            color: #fff;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #3454d1;
+        }
+        
+        /* ヒーローセクション */
+        .hero {
+            padding: 160px 0 100px;
+            background: linear-gradient(135deg, #f5f7ff 0%, #e9f0ff 100%);
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #222;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+        
+        /* 特徴セクション */
+        .features {
+            padding: 100px 0;
+        }
+        
+        .section-heading {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-heading h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .section-heading p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .feature-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 30px;
+            width: calc(33.333% - 20px);
+            min-width: 300px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: #f5f7ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: #4a6cf7;
+            font-size: 30px;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+        
+        .feature-card p {
+            color: #666;
+        }
+        
+        /* 価格セクション */
+        .pricing {
+            padding: 100px 0;
+            background: #f9faff;
+        }
+        
+        .pricing-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .pricing-card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 40px 30px;
+            width: calc(33.333% - 20px);
+            min-width: 300px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-card.featured {
+            border: 2px solid #4a6cf7;
+            transform: scale(1.05);
+        }
+        
+        .pricing-card.featured::before {
+            content: "おすすめ";
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background: #4a6cf7;
+            color: #fff;
+            padding: 5px 40px;
+            transform: rotate(45deg);
+            font-size: 14px;
+        }
+        
+        .pricing-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        .price {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #4a6cf7;
+        }
+        
+        .price span {
+            font-size: 16px;
+            color: #666;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .pricing-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #f1f1f1;
+        }
+        
+        /* お客様の声セクション */
+        .testimonials {
+            padding: 100px 0;
+        }
+        
+        .testimonial-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .testimonial-card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 30px;
+            width: calc(50% - 15px);
+            min-width: 300px;
+        }
+        
+        .testimonial-content {
+            margin-bottom: 20px;
+            font-style: italic;
+            color: #555;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            background-color: #f1f1f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #4a6cf7;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        /* CTA セクション */
+        .cta {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #4a6cf7 0%, #3454d1 100%);
+            color: #fff;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+        
+        .btn-white {
+            background-color: #fff;
+            color: #4a6cf7;
+        }
+        
+        .btn-white:hover {
+            background-color: #f5f5f5;
+        }
+        
+        /* フッター */
+        footer {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 80px 0 30px;
+        }
+        
+        .footer-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-col {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-col h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #fff;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icon {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icon:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        /* レスポンシブデザイン */
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                padding: 20px 0;
+            }
+            
+            .nav-links {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 5px 10px;
+            }
+            
+            .hero {
+                padding: 150px 0 80px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .feature-card, .pricing-card, .testimonial-card {
+                width: 100%;
+            }
+            
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header>
+        <div class="container">
+            <nav class="nav">
+                <a href="#" class="logo">ブランド名</a>
+                <ul class="nav-links">
+                    <li><a href="#features">特徴</a></li>
+                    <li><a href="#pricing">料金プラン</a></li>
+                    <li><a href="#testimonials">お客様の声</a></li>
+                    <li><a href="#contact">お問い合わせ</a></li>
+                    <li><a href="#" class="btn">無料で始める</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section class="hero">
+        <div class="container">
+            <h1>あなたのビジネスを次のレベルへ</h1>
+            <p>革新的なソリューションで、効率性を向上させ、コストを削減し、収益を最大化します。</p>
+            <a href="#" class="btn">今すぐ始める</a>
+        </div>
+    </section>
+
+    <!-- 特徴セクション -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-heading">
+                <h2>なぜ選ばれるのか</h2>
+                <p>私たちのプロダクトは、ビジネスの成長と成功に不可欠な機能を提供します。</p>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">★</div>
+                    <h3>使いやすさ</h3>
+                    <p>直感的なインターフェースで、技術的な知識がなくても簡単に使用できます。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">↗</div>
+                    <h3>高度な分析</h3>
+                    <p>リアルタイムのデータ分析により、より賢明なビジネス判断を可能にします。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">♺</div>
+                    <h3>自動化</h3>
+                    <p>時間のかかる作業を自動化し、リソースを重要なタスクに集中できます。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚙</div>
+                    <h3>カスタマイズ</h3>
+                    <p>あなたのビジネスの特定のニーズに合わせてカスタマイズ可能です。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">☁</div>
+                    <h3>クラウドベース</h3>
+                    <p>どこからでもアクセスでき、常に最新の状態を維持します。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>高速パフォーマンス</h3>
+                    <p>迅速な処理とレスポンスで、効率的な作業が可能になります。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 料金プランセクション -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-heading">
+                <h2>シンプルな料金プラン</h2>
+                <p>ビジネスの規模に関係なく、すべての企業に最適なプランをご用意しています。</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>スタータープラン</h3>
+                    <div class="price">¥5,000<span>/月</span></div>
+                    <ul class="pricing-features">
+                        <li>基本機能</li>
+                        <li>3ユーザーまで</li>
+                        <li>5GBストレージ</li>
+                        <li>メールサポート</li>
+                        <li>月次レポート</li>
+                    </ul>
+                    <a href="#" class="btn">選択する</a>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>プロフェッショナル</h3>
+                    <div class="price">¥15,000<span>/月</span></div>
+                    <ul class="pricing-features">
+                        <li>すべての基本機能</li>
+                        <li>10ユーザーまで</li>
+                        <li>20GBストレージ</li>
+                        <li>優先サポート</li>
+                        <li>週次レポート</li>
+                        <li>高度な分析</li>
+                    </ul>
+                    <a href="#" class="btn">選択する</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>エンタープライズ</h3>
+                    <div class="price">¥30,000<span>/月</span></div>
+                    <ul class="pricing-features">
+                        <li>すべてのプロ機能</li>
+                        <li>無制限ユーザー</li>
+                        <li>100GBストレージ</li>
+                        <li>24/7サポート</li>
+                        <li>カスタムレポート</li>
+                        <li>専任アカウントマネージャー</li>
+                    </ul>
+                    <a href="#" class="btn">選択する</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- お客様の声セクション -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-heading">
+                <h2>お客様の声</h2>
+                <p>私たちのサービスを利用されているお客様からの声をご紹介します。</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>「このサービスを導入してから、業務効率が大幅に向上しました。使いやすさと機能性のバランスが素晴らしく、スタッフ全員が喜んで使用しています。」</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">TK</div>
+                        <div class="author-info">
+                            <h4>田中健太</h4>
+                            <p>株式会社イノベーション CEO</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>「導入前は懐疑的でしたが、実際に使ってみると、その価値に驚きました。カスタマーサポートも素晴らしく、問題があってもすぐに解決してくれます。」</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SM</div>
+                        <div class="author-info">
+                            <h4>佐藤美香</h4>
+                            <p>グローバルテック マーケティングディレクター</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>「私たちのようなスタートアップにとって、コスト効率の良いソリューションを見つけることは重要です。このサービスは予算内で最高の機能を提供してくれます。」</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">KY</div>
+                        <div class="author-info">
+                            <h4>木村裕太</h4>
+                            <p>テックスタート 創業者</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>「データ分析機能が非常に優れており、ビジネスの意思決定に大いに役立っています。使えば使うほど、その価値を実感します。」</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">YA</div>
+                        <div class="author-info">
+                            <h4>山田あい</h4>
+                            <p>フューチャーコーポレーション データアナリスト</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTAセクション -->
+    <section class="cta" id="contact">
+        <div class="container">
+            <h2>今すぐ始めましょう</h2>
+            <p>無料トライアルで、私たちのサービスがあなたのビジネスにどれだけ役立つかをお確かめください。</p>
+            <a href="#" class="btn btn-white">無料でお試し</a>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>ブランド名</h4>
+                    <p>革新的なソリューションで、ビジネスの成長をサポートします。</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon">f</a>
+                        <a href="#" class="social-icon">t</a>
+                        <a href="#" class="social-icon">in</a>
+                        <a href="#" class="social-icon">ig</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>プロダクト</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">特徴</a></li>
+                        <li><a href="#">料金プラン</a></li>
+                        <li><a href="#">お客様事例</a></li>
+                        <li><a href="#">統合</a></li>
+                        <li><a href="#">パートナー</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>サポート</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">ヘルプセンター</a></li>
+                        <li><a href="#">お問い合わせ</a></li>
+                        <li><a href="#">ドキュメント</a></li>
+                        <li><a href="#">コミュニティ</a></li>
+                        <li><a href="#">ステータス</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>会社情報</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">私たちについて</a></li>
+                        <li><a href="#">ブログ</a></li>
+                        <li><a href="#">キャリア</a></li>
+                        <li><a href="#">プレスリリース</a></li>
+                        <li><a href="#">お知らせ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>法的情報</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">利用規約</a></li>
+                        <li><a href="#">プライバシーポリシー</a></li>
+                        <li><a href="#">セキュリティ</a></li>
+                        <li><a href="#">クッキーポリシー</a></li>
+                        <li><a href="#">特定商取引法</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 ブランド名. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
